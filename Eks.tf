@@ -27,13 +27,11 @@ resource "aws_eks_cluster" "eks-project" {
 
   vpc_config {
     subnet_ids = [
-      aws_subnet.public_subnet_az1.id,
-      aws_subnet.public_subnet_az2.id,
       aws_subnet.private_subnet_az1.id,
       aws_subnet.private_subnet_az2.id
     ]
     endpoint_private_access = true
   }
-  
+
   depends_on = [aws_iam_role_policy_attachment.masternode-AmazonEKSClusterPolicy]
 }
